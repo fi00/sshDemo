@@ -1,6 +1,6 @@
 
 .gitattributes
-.idea/compiler.xml
+.idea/*
 *.iml
-target/classes/applicationContext.xml
+target/*
 *.jar
