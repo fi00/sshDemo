@@ -6,7 +6,6 @@
 .idea/misc.xml
 .idea/vcs.xml
 .idea/workspace.xml
-src/main/resources/dataSource.xml
 sshDemo.iml
 target/classes/applicationContext.xml
 target/classes/cn/coolwind/ssh/core/config/SwaggerConfig.class
