@@ -3,6 +3,9 @@ package cn.coolwind.ssh.web.entity;
 import javax.persistence.*;
 import java.io.Serializable;
 
+/**
+ * @author coolwind
+ */
 @Entity
 @Table(name = "aaa")
 public class Test implements Serializable {

@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Map;
 
+/**
+ * @author coolwind
+ */
 @Controller
 public class TestController extends BaseController {
 

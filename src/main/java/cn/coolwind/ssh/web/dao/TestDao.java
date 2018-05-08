@@ -7,7 +7,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Transactional
+/**
+ * @author coolwind
+ */
 @Repository
 public class TestDao extends BaseDao {
 

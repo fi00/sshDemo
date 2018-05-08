@@ -2,7 +2,6 @@ package cn.coolwind.ssh.web.service;
 
 import cn.coolwind.ssh.web.dao.TestDao;
 import cn.coolwind.ssh.web.entity.Test;
-import com.fasterxml.jackson.databind.util.BeanUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,6 +9,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+/**
+ * @author coolwind
+ */
 @Service
 public class TestService {
 

@@ -2,13 +2,16 @@ package cn.coolwind.ssh.core.base;
 
 import java.util.HashMap;
 import java.util.Map;
-
+/**
+ * @author coolwind
+ */
 public class BaseController {
-    protected Map success(Object list) {
+    protected Map success(Object data) {
         Map<String, Object> map = new HashMap<>();
-        map.put("state", 1);
+        map.put("state", true);
+        map.put("code",1);
         map.put("msg", "操作成功！");
-        map.put("data", list);
+        map.put("data", data);
         return map;
     }
 
@@ -19,7 +22,8 @@ public class BaseController {
 
     protected Map failed(String msg) {
         Map<String, Object> map = new HashMap<>();
-        map.put("state", 0);
+        map.put("state",false);
+        map.put("code", 0);
         map.put("msg", msg);
         return map;
     }
