@@ -5,10 +5,12 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.swing.plaf.PanelUI;
+
 import java.util.List;
 
+@Transactional
 public class BaseDao<T> {
     @Autowired
     private SessionFactory sessionFactory;
@@ -17,8 +19,9 @@ public class BaseDao<T> {
         return sessionFactory.getCurrentSession();
     }
 
+    @SuppressWarnings("deprecation")
     public List sqlQuery(String sql,Object... values) {
-        Query query = getSession().createSQLQuery(sql);
+        Query query = getSession().createNativeQuery(sql);
         if (values != null) {
             for (int i = 0; i < values.length; i++) {
                 if (values[i] != null) {
@@ -30,7 +33,7 @@ public class BaseDao<T> {
     }
 
     public void sqlUpdate(String sql, Object... values) {
-        Query query = getSession().createSQLQuery(sql);
+        Query query = getSession().createNativeQuery(sql);
         if (values != null) {
             for (int i = 0; i < values.length; i++) {
                 if (values[i] != null) {
@@ -53,12 +56,16 @@ public class BaseDao<T> {
         return query.list();
     }
 
-    public void save(T model) {
-        getSession().save(model);
+    public int save(T model) {
+       return (int) getSession().save(model);
     }
 
     public void saveOrUpdate(T model) {
-        getSession().saveOrUpdate(model);
+        try {
+            getSession().saveOrUpdate(model);
+        } catch (Exception e) {
+            getSession().merge(model);
+        }
     }
 
     public void delete(T model) {
@@ -67,6 +74,7 @@ public class BaseDao<T> {
 
     public void update(T model) {
         getSession().update(model);
+
     }
 
 }
